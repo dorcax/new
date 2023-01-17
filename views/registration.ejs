@@ -1,0 +1,47 @@
+<%- include("header") %> 
+
+
+<h3>Applicant Registration form </h3>
+<p>please fill in your details below</p>
+<% if(typeof error !="undefined"){ %>
+<% error.forEach((er)=>{%>
+    <h5 style="color:red"><%= er.msg %> </h5>
+
+<%})%>
+<% } %> 
+
+
+
+<form action="/register" method="post">
+    <p>Firstname: </p>
+    <input type="text" name="fn" id="" value="<%=typeof fn !="undefined"?fn:'' %>">
+    <p>Lastname:</p>
+    <input type="text" name="ln" id="" value="<%=typeof ln !="undefined"?ln:'' %>">
+    <p>Gender</p>
+    Male <input type="radio" name="sex" id="" value="Male"
+    <% if (typeof sex !="undefined" && sex ==="Male"){%>
+        checked="checked"
+  <% } %> >
+    Female <input type="radio" name="sex" id="" value="Female"  <% if (typeof sex !="undefined" && sex ==="Female"){%>
+        checked="checked"
+  <% } %> >
+    <p>Phone number:</p>
+    <input type="text" name="phone" id="" value="<%=typeof phone !="undefined"?phone:'' %>">
+    <p>Address:</p>
+    <textarea name="address" id="" cols="25" rows="6"> <%=typeof address !="undefined"?address:'' %></textarea>
+    <% let program =["Software Development","Frontend Development","UI/UXDesign","Datat Science","Fullstack Development","Graphics Design"
+] %> 
+<p>course</p>
+<select name="course" >
+    <option value="">Select course</option>
+    <% program.forEach((pro)=>{%> 
+  <option value="<%= pro %>"<%if(typeof course !="undefined" && course===prp){%>  selected="selected" <%} %>><%= pro %></option>
+   <% }) %>
+    
+    </select>
+<br>
+<br>
+<br><input type="submit" value="Click to register">
+ 
+</form>
+<%- include("footer") %> 

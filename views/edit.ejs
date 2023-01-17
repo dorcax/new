@@ -1,0 +1,34 @@
+<%-  include("header") %> 
+<h3>Edit Applicant</h3>
+<form action="/editpage/<%=result._id%>" method="post">
+    <p>Firstname: <input type="text" name="fn" id="" value="<%= result.fn%>"></p>
+    <p>Lastname: <input type="text" name="ln" id="" value="<%= result.ln%>"></p>
+    <p>Gender: Male <input type="radio" name="sex" id="" value ="Male"
+        <% if (result.sex==="Male"){%> checked="checked" <%}%>>
+        Female:<input type="radio" name="sex" id="" value ="Female"
+        <% if (result.sex==="Female"){%> checked="checked" <%}%>>
+
+
+    </p>
+    <p>phone number: <input type="text" name="phone" id="" value="<%=result.phone%>"></p>
+    <p>Address: <br>
+    <textarea name="address" id="" cols="30" rows="10"><%= result.address%></textarea></p>
+    <% let program =["Software Development","Frontend Development","UI/UXDesign","Datat Science","Fullstack Development","Graphics Design"
+    ] %> 
+    <p>course
+    <select name="course" >
+        <option value="">Select course</option>
+        <% program.forEach((pro)=>{%> 
+      <option value="<%= pro %>" <% if(result.course===pro){
+        %>selected="selected"<%}%>><%= pro %></option>
+       <% }) %>
+        
+        </select>
+        </p>
+        <input type="submit" value="click to submit">
+
+</form>
+
+
+
+<%- include("footer") %> 

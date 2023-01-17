@@ -1,0 +1,26 @@
+<%- include ("header") %>
+<h3>Registered  Students </h3>
+<table border="1">
+    <tr>
+        <th>Name</th>
+        <th>Gender</th>
+        <th>Phone Number</th>
+        <th>Address</th>
+        <th>Course</th>
+        <th>Edit</th>
+        <th>Delete</th>
+    </tr>
+    <tr>
+        <% result.forEach((r)=>{%>
+          <td><%= r.fn +" "+r.ln %> </td>
+          <td><%= r.sex %> </td>
+          <td><%= r.phone %> </td>
+          <td><%= r.address %> </td>
+          <td><%= r.course %> </td>
+          <td><a href="/edit/<%= r.id %> ">Edit</a></td>
+          <td><a href="/delete/<%= r.id %> ">Delete</a></td>
+</tr>
+        <%}) %> 
+  
+</table>
+<%- include("footer")%>
